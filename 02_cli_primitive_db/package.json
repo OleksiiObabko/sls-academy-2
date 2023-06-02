@@ -1,0 +1,15 @@
+{
+  "name": "02_cli_primitive_db",
+  "version": "1.0.0",
+  "description": "primitive db",
+  "main": "index.js",
+  "bin": {
+    "primitive_db": "index.js"
+  },
+  "keywords": [],
+  "author": "Oleksii Obabko",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
