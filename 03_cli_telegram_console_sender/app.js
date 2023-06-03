@@ -4,6 +4,7 @@ process.env["NTBA_FIX_350"] = 1;
 const {Command} = require("commander");
 const TelegramBot = require("node-telegram-bot-api");
 
+// Telegram bot userName: https://t.me/cli_console_sender_bot
 const token = "5784820205:AAH-AqjGbG0uDyuexBB5aPE6Q45j9DmdPdo";
 const chatId = "1031806045";
 
