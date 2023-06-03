@@ -1,18 +1,21 @@
 const readline = require("readline");
 
-function sortAlphabetically(words) {
+function sortAlphabetically(symbols) {
+	const words = symbols.filter(symbol => isNaN(symbol));
 	words.sort();
 	console.log(words);
 	dataInput();
 }
 
-function sortFromSmallest(digits) {
+function sortFromSmallest(symbols) {
+	const digits = symbols.filter(symbol => !isNaN(symbol));
 	digits.sort((a, b) => a - b);
 	console.log(digits);
 	dataInput();
 }
 
-function sortFromBiggest(digits) {
+function sortFromBiggest(symbols) {
+	const digits = symbols.filter(symbol => !isNaN(symbol));
 	digits.sort((a, b) => b - a);
 	console.log(digits);
 	dataInput();
@@ -24,9 +27,16 @@ function sortByLength(words) {
 	dataInput();
 }
 
-function showUniqueWords(words) {
+function showUniqueWords(symbols) {
+	const words = symbols.filter(symbol => isNaN(symbol));
 	const uniqueWords = [...new Set(words)];
 	console.log(uniqueWords);
+	dataInput();
+}
+
+function showUniqueSymbols(symbols) {
+	const uniqueSymbols = [...new Set(symbols)];
+	console.log(uniqueSymbols);
 	dataInput();
 }
 
@@ -41,7 +51,7 @@ function dataInput() {
 
 function sortTypeInput(input) {
 	const userData = input.split(" ");
-	const prompt = "How would you like to sort values: \n 1. Words by name (from A to Z). \n 2. Show digits from the smallest. \n 3. Show digits from the biggest. \n 4. Show by quantity of letters. \n 5. Only unique words. \n \n Select (1 - 5) and press ENTER (exit to close program): ";
+	const prompt = "How would you like to sort values: \n 1. Words by name (from A to Z). \n 2. Show digits from the smallest. \n 3. Show digits from the biggest. \n 4. Show by quantity of letters. \n 5. Only unique words. \n 6. Show only unique values from the set of words and numbers \n \n Select (1 - 5) and press ENTER (exit to close program): ";
 
 	rl.question(prompt, sortType => {
 		if (sortType.toLowerCase() === "exit") {
@@ -63,8 +73,11 @@ function sortTypeInput(input) {
 				case "5":
 					showUniqueWords(userData);
 					break;
+				case "6":
+					showUniqueSymbols(userData);
+					break;
 				default:
-					console.log('Invalid choice. Please try again.');
+					console.log("Invalid choice. Please try again.");
 					sortTypeInput(input);
 			}
 		}
