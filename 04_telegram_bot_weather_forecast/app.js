@@ -15,22 +15,18 @@ bot.on("message", async (msg) => {
 	const chatId = msg.chat.id;
 	const text = msg.text;
 
-	try {
-		if (text === "/start") {
-			await bot.sendMessage(
-				chatId,
-				"Welcome!",
-				{
-					reply_markup: JSON.stringify({
-						inline_keyboard: [
-							[{text: "Forecast in Kyiv", callback_data: "kyiv"}]
-						]
-					}),
-				}
-			);
-		}
-	} catch (e) {
-		console.log("ERROR", e);
+	if (text === "/start") {
+		await bot.sendMessage(
+			chatId,
+			"Welcome!",
+			{
+				reply_markup: JSON.stringify({
+					inline_keyboard: [
+						[{text: "Forecast in Kyiv", callback_data: "kyiv"}]
+					]
+				}),
+			}
+		);
 	}
 });
 
@@ -39,19 +35,19 @@ bot.on("callback_query", async (msg) => {
 	const messageId = msg.message.message_id;
 	const callbackData = msg.data;
 
-	try {
-		if (callbackData === "kyiv") {
-			await bot.editMessageText("Choose interval", {
-				chat_id: chatId,
-				message_id: messageId,
-				reply_markup: JSON.stringify({
-					inline_keyboard: [
-						[{text: "3 hours", callback_data: "3"}],
-						[{text: "6 hours", callback_data: "6"}]
-					]
-				})
-			});
-		} else if (callbackData === "3" || callbackData === "6") {
+	if (callbackData === "kyiv") {
+		await bot.editMessageText("Choose interval", {
+			chat_id: chatId,
+			message_id: messageId,
+			reply_markup: JSON.stringify({
+				inline_keyboard: [
+					[{text: "3 hours", callback_data: "3"}],
+					[{text: "6 hours", callback_data: "6"}]
+				]
+			})
+		});
+	} else if (callbackData === "3" || callbackData === "6") {
+		try {
 			const {data} = await axios.get(baseURL);
 			let weatherList = data.list;
 
@@ -64,9 +60,9 @@ bot.on("callback_query", async (msg) => {
 			await bot.editMessageText(message, {
 				chat_id: chatId, message_id: messageId
 			});
+		} catch (e) {
+			console.log("ERROR", e);
 		}
-	} catch (e) {
-		console.log("ERROR", e);
 	}
 });
 
