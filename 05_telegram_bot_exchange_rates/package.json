@@ -1,0 +1,20 @@
+{
+  "name": "05_telegram_bot_exchange_rates",
+  "version": "1.0.0",
+  "description": "Bot for getting the exchange rate. You can use a previously created bot, or create a new one",
+  "main": "app.js",
+  "bin": {
+    "exchange-rates": "app.js"
+  },
+  "author": "Oleksii Obabko",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.1.4",
+    "node-cache": "^5.1.2",
+    "node-telegram-bot-api": "^0.61.0"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.61.6"
+  }
+}
