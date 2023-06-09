@@ -1,0 +1,8 @@
+{
+  "name": "06_instagram_giveaway",
+  "version": "1.0.0",
+  "description": "instagram giveaway",
+  "main": "app.js",
+  "author": "Oleksii Obabko",
+  "license": "ISC"
+}
