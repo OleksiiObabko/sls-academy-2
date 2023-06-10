@@ -1,0 +1,8 @@
+{
+  "name": "07_grouping_vacations",
+  "version": "1.0.0",
+  "description": "grouping vacations",
+  "main": "app.js",
+  "author": "Oleksii Obabko",
+  "license": "ISC"
+}
