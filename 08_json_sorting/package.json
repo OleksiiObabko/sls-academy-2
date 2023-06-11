@@ -1,0 +1,11 @@
+{
+  "name": "08_json_sorting",
+  "version": "1.0.0",
+  "description": "json sorting",
+  "main": "app.js",
+  "author": "Oleksii Obabko",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
