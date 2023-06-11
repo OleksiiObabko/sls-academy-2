@@ -39,21 +39,21 @@ async function existInSomeFiles(filesCount) {
 	const filePromises = fileNames.map(file => readFile(`./data/${file}`, {encoding: "utf-8"}));
 	const filesData = await Promise.all(filePromises);
 
-	const nameCounts = new Map();
+	const nameCounts = {};
 
 	for (const fileData of filesData) {
 		const names = fileData.trim().split("\n");
 		const uniqueNames = new Set(names);
 
 		for (const uniqueName of uniqueNames) {
-			const count = nameCounts.get(uniqueName) || 0;
-			nameCounts.set(uniqueName, count + 1);
+			const count = nameCounts[uniqueName] || 0;
+			nameCounts[uniqueName] = count + 1;
 		}
 	}
 
 	let countInSomeFiles = 0;
 
-	for (const count of nameCounts.values()) {
+	for (const count of Object.values(nameCounts)) {
 		if (filesCount === totalFiles && count === totalFiles) {
 			countInSomeFiles++;
 		} else if (count >= filesCount) {
